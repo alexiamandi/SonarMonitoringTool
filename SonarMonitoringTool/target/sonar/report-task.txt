@@ -1,0 +1,5 @@
+projectKey=com.SocGen:Test
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/com.SocGen:Test
+ceTaskId=AVNlHBduuzW8fmpdUNX5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVNlHBduuzW8fmpdUNX5

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot and Thymeleaf example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h4>Link:</h4>
+		<p th:text="${ok}" />
+<table>
+	<tr th:each="Project : ${Projects}">
+    <td th:text="${Project.id}">1</td>
+    <td><a th:href="|/project/${Project.id}|" th:text="${Project.name}">Title ...</a></td>
+</tr>
+</table>
+</body>
+</html>

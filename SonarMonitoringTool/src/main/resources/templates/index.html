@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot and Thymeleaf example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+body
+{
+width:1000px; 
+margin: 0 auto;
+}
+
+</style>
+ </head>
+<body>
+	<form action="#" th:action="@{/}" th:object="${instance}" method="post">
+		<table>
+			<tr>
+				<td>Link:</td>
+				<td><input type="text" th:field="*{link}" /></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Submit post</button></td>
+			</tr>
+		</table>
+	</form>
+<table>
+	<tr th:each="Instance : ${Instances}">
+    <td th:text="${Instance.link}">Link</td>
+</tr>
+</table>
+</body>
+</html>
