@@ -2,48 +2,40 @@
 <html>
 <head>
 <title>Hello AngularJS</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
 <script src="hello.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="myApp">
-<div id="wrapper">
-	<header>
-		<div class="header-left">
-			<h1>Sonar Monitoring Tool</h1>
-		</div>
-	</header>
-	<div id="middle">
-	
-	<br>
-	<br>
-		<div style="background-color:rgba(0,0,0,0.5);">
-		<div id="middle-bottom" ng-controller="URLCtrl">
-			<div >
-				<form name="URLForm" ng-submit="saveURL(URLInfo)">
-					<label>URL:</label>
-					<input type="text" name="fURL" ng-model="URLInfo.fURL" ng-required="true" ng-minlength="2" />
-					<span class="error-message" ng-show="URLForm.fURL.$dirty && URLForm.fURL.$error.required">Must Enter a URL
-					</span>
-
-					<span class="error-message" ng-show="URLForm.fURL.$dirty && URLForm.fURL.$error.minlength">Must be a Minimum of 2 Characters</span>
-					<br>
-				<input type="submit" value="Save" ng-disabled="saveButtonSwitch"/>
+	<div id="wrapper">
+		<header>
+			<div class="header-left">
+				<h1>Sonar Monitoring Tool</h1>
 			</div>
-							<img ng-class="loadingClass" width="50" height="50" src="http://www.mvgen.com/loader.gif"/>
-			
+		</header>
+		<div id="middle">
+
+			<br> <br>
+			<div style="background-color: rgba(0, 0, 0, 0.5);">
+				<div id="middle-bottom" ng-controller="URLCtrl">
+					<div>
+						<form name="URLForm" ng-submit="saveURL(URLInfo)">
+							<label>URL:</label> <input type="text" name="fURL"
+								ng-model="URLInfo.fURL" ng-required="true" ng-minlength="2" />
+							<br> <input type="submit" ng-class="button1Class" value="Save"
+								ng-disabled="saveButtonSwitch" />
+					</div>
+					<img ng-class="loadingClass" width="50" height="50"
+						src="http://www.mvgen.com/loader.gif" />
+
+				</div>
+			</div>
 		</div>
-		</div>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-</div>
 </body>
 </html>

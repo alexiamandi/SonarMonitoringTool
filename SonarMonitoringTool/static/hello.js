@@ -20,16 +20,23 @@ myApp.controller('URLCtrl', [
 		'$http',
 		function($window, $scope, $http) {
 			$scope.loadingClass = "loading-hidden";
+			$scope.button1Class = "button1";
 			$scope.saveButtonSwitch = false;
 			$scope.saveURL = function(URLInfo) {
-				$scope.loadingClass = "loading-visible";
-				$scope.saveButtonSwitch = true;
+				if(URLInfo.fURL.substring(0,7)=="http://" || URLInfo.fURL.substring(0,8)=="https://"){
+					$scope.loadingClass = "loading-visible";
+					$scope.button1Class = "button1 disabled"
+					$scope.saveButtonSwitch = true;
 				if (URLInfo.fURL.substring(4, 5) == 's')
 					var URL = 'http://localhost:8080/newURL/'
 							+ URLInfo.fURL.substring(8) + '/true';
 				else
 					var URL = 'http://localhost:8080/newURL/'
 							+ URLInfo.fURL.substring(7) + '/false'
+				}
+				else {
+					$window.alert("The URL is not good! URL:" + URLInfo.fURL.substring(0,8));
+				}
 				console.log(URL);
 				$http.get(URL).success(function(data) {
 					$window.location.href = 'sonar-projects.html';
