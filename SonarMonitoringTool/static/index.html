@@ -19,8 +19,8 @@
 	<br>
 	<br>
 		<div style="background-color:rgba(0,0,0,0.5);">
-		<div id="middle-bottom">
-			<div ng-controller="URLCtrl">
+		<div id="middle-bottom" ng-controller="URLCtrl">
+			<div >
 				<form name="URLForm" ng-submit="saveURL(URLInfo)">
 					<label>URL:</label>
 					<input type="text" name="fURL" ng-model="URLInfo.fURL" ng-required="true" ng-minlength="2" />
@@ -29,8 +29,10 @@
 
 					<span class="error-message" ng-show="URLForm.fURL.$dirty && URLForm.fURL.$error.minlength">Must be a Minimum of 2 Characters</span>
 					<br>
-				<input type="submit" value="Save" ng-disabled="URLForm.$invalid"/> 
+				<input type="submit" value="Save" ng-disabled="saveButtonSwitch"/>
 			</div>
+							<img ng-class="loadingClass" width="50" height="50" src="http://www.mvgen.com/loader.gif"/>
+			
 		</div>
 		</div>
 	</div>

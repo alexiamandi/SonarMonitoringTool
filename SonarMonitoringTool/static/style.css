@@ -39,3 +39,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#378ce8', end
 	text-align:center;
 	color:white;
 }
+
+.loading-hidden{
+	 visibility: hidden;
+	 background-color:inherit;
+}
+.loading-visible{
+	visibility: visible
+}

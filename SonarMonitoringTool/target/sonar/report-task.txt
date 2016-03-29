@@ -1,5 +1,5 @@
-projectKey=com.SocGen:Test
+projectKey=com.SocGen:SonarMonitoringTool
 serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/com.SocGen:Test
-ceTaskId=AVNlHBduuzW8fmpdUNX5
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVNlHBduuzW8fmpdUNX5
+dashboardUrl=http://localhost:9000/dashboard/index/com.SocGen:SonarMonitoringTool
+ceTaskId=AVPCarulZMxE-YGhSZG-
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVPCarulZMxE-YGhSZG-
