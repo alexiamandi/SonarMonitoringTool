@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +21,9 @@ public class Home {
 
 	@Autowired
 	private GetInfo getInfo;
-
+	
 	@RequestMapping(value = "/projects")
-	public Iterable<Project> showProjects(Model model) {
+	public List<Project> showProjects(Model model) {
 		ArrayList<Project> listOfProjects = (ArrayList<Project>) projectRepository.findAll();
 		System.out.println("---"+listOfProjects.size()+" projects---");
 		return listOfProjects;

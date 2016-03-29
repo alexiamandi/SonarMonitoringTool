@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<title>Hello AngularJS</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+<script src="hello.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+<div id="wrapper">
+
+	<header>
+		<div class="header-left">
+			<h1>Sonar Monitoring Tool</h1>
+		</div>
+	</header>
+
+    <table ng-controller="Hello">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="project in projects">
+            <td>{{project.id}}</td>
+            <td><a ng-href='project.html?projectId={{ project.id }}'>{{project.name}}</a></td>
+            <td>{{project.url}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</body>
+</html>

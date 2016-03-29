@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<title>Project</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+
+<script src="hello.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+<div id="wrapper">
+
+	<header>
+		<div class="header-left">
+			<h1>Sonar Monitoring Tool</h1>
+		</div>
+	</header>
+
+    <table ng-controller="GetProjectCtrl">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{project.id}}</td>
+            <td>{{project.name}}</td>
+            <td>{{project.url}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</body>
+</html>
