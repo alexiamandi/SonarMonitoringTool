@@ -72,14 +72,8 @@ public class GetInfo {
 					for (Project project : newProjects) {
 						project.setURL(instance.getLink());
 					}
-				} catch (MalformedURLException e) {
-					LOGGER.log(Level.FINE, Eroare, e);
-				} catch (JsonGenerationException e) {
-					LOGGER.log(Level.FINE, Eroare, e);
-				} catch (JsonMappingException e) {
-					LOGGER.log(Level.FINE, Eroare, e);
 				} catch (IOException e) {
-					LOGGER.log(Level.FINE, Eroare, e);
+					LOGGER.log(Level.SEVERE, Eroare, e);
 				}
 
 				for (Project project : newProjects) {
