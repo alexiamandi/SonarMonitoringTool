@@ -2,37 +2,87 @@
 <html>
 <head>
 <title>Project</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+<!-- Load c3.css -->
+<link href="c3/c3.css" rel="stylesheet" type="text/css">
 
+<!-- Load d3.js and c3.js -->
+<script src="c3/d3.min.js" charset="utf-8"></script>
+<script src="c3/c3.min.js"></script>
 <script src="hello.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="myApp">
-<div id="wrapper">
+	<div id="wrapper">
 
-	<header>
-		<div class="header-left">
-			<h1>Sonar Monitoring Tool</h1>
+		<header>
+			<div class="header-left">
+				<h1>
+					<a href="/index.html" target="_self">Sonar Monitoring Tool</a>
+				</h1>
+			</div>
+		</header>
+
+		<nav>
+
+			<ul>
+				<li><a href="/" target="_self">Add new URL</a></li>
+				<li style="float: right;"><a href="/sonar-projects.html"
+					target="_self">All projects</a></li>
+			</ul>
+
+		</nav>
+		<div ng-controller="GetProjectCtrl">
+			<img ng-class="loadingBox" style="text-align: center;" src="http://www.mvgen.com/loader.gif" />
+
+			<table>
+				<thead>
+					<tr>
+						<td>
+							<h2>{{project.name}}</h2> {{project.description}}
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><b>ID</b>: {{project.id}}</td>
+					</tr>
+					<tr>
+						<td><b>Name</b>: {{project.name}}</td>
+					</tr>
+					<tr>
+						<td><b>URL</b>: <a
+							ng-href='{{project.url}}overview?id={{project.id}}'>{{project.url}}</a></td>
+					</tr>
+					<tr>
+						<td><b>Last update date</b>: {{project.date}}</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div>
+			
+			<form novalidate>
+
+    <select ng-model="config.type1" ng-options="typeOption for typeOption in typeOptions"></select>
+
+</form>
+<button ng-click="showGraph()">Show graph</button>
+			
+			</div>
+
+    <div id="chart"></div>
+
 		</div>
-	</header>
 
-    <table ng-controller="GetProjectCtrl">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>URL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{project.id}}</td>
-            <td>{{project.name}}</td>
-            <td><a ng-href='{{project.url}}overview?id={{project.id}}'>{{project.url}}</a></td>
-        </tr>
-    </tbody>
-    </table>
-</div>
+	</div>
+	</div>
+
 </body>
 </html>

@@ -21,28 +21,39 @@ public class Home {
 
 	@Autowired
 	private GetInfo getInfo;
-	
+
 	@RequestMapping(value = "/projects")
 	public List<Project> showProjects(Model model) {
 		ArrayList<Project> listOfProjects = (ArrayList<Project>) projectRepository.findAll();
-		System.out.println("---"+listOfProjects.size()+" projects---");
+		System.out.println("---" + listOfProjects.size() + " projects---");
 		return listOfProjects;
 	}
 
 	@RequestMapping(path = "/project/{projectId}", method = RequestMethod.GET)
 	public Project getProject(@PathVariable String projectId, Model model) {
-		Project project = projectRepository.findById(Long.parseLong(projectId));
-		return project;
+		Boolean found = false;
+		Project foundProject = projectRepository.findById(Long.parseLong(projectId));
+		for (Project project : getInfo.getProjectsToParse()) {
+			if (project.getId().equals(foundProject.getId())) {
+				System.out.println("Getting old metrics for project "+foundProject.getId()+"."+foundProject.getName());
+				getInfo.timeMachine(foundProject.getId(), foundProject.getURL());
+				found=true;
+			} 
+		}
+		if (found == true)
+			{getInfo.getProjectsToParse().remove(foundProject);
+			System.out.println("Deleted project "+foundProject.getId()+"."+foundProject.getName());
+			}
+		return foundProject;
 	}
 
 	@RequestMapping(path = "/newURL/{URL}/{s}", method = RequestMethod.GET)
-	public void getInfo(@PathVariable String URL, @PathVariable Boolean s, Model model) {
+	public boolean getInfo(@PathVariable String URL, @PathVariable Boolean s, Model model) {
 		String givenURL;
 		if (s) {
-			givenURL = "https://"+URL+"/";
-		}
-		else{
-			givenURL = "http://"+URL+"/";
+			givenURL = "https://" + URL + "/";
+		} else {
+			givenURL = "http://" + URL + "/";
 		}
 
 		Instance findInstance = instanceRepository.findByLink(givenURL);
@@ -50,8 +61,13 @@ public class Home {
 			System.out.println("Given URL already exists in the database.");
 		} else {
 			Instance newInstance = new Instance(givenURL);
-			instanceRepository.save(newInstance);
-			getInfo.listOfProjects(newInstance);
+
+			if (!getInfo.listOfProjects(newInstance)) {
+				System.out.println("Given URL is not SONAR");
+				return false;
+			} else
+				instanceRepository.save(newInstance);
 		}
+		return true;
 	}
 }

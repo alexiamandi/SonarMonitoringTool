@@ -4,7 +4,9 @@
 <title>Hello AngularJS</title>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="hello.js"></script>
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="myApp">
@@ -12,26 +14,37 @@
 
 	<header>
 		<div class="header-left">
-			<h1>Sonar Monitoring Tool</h1>
+				<h1><a href="/index.html">Sonar Monitoring Tool</a></h1>
 		</div>
 	</header>
+		<nav>
 
-    <table ng-controller="Hello">
+			<ul>
+				<li ><a href="/">Add new URL</a></li>
+				<li class="active" style="float:right;" ><a href="/sonar-projects.html">All projects</a></li>
+			</ul>
+
+		</nav>
+<div ng-controller="Hello">
+	<img ng-class="loadingBox" width='50px' height='50px' style="display:block; margin:0 auto;"src="http://www.mvgen.com/loader.gif"  />
+	<div ng-if="projects.length ===0 ">No projects yet!</div>
+	
+    <table  width="100%">
     <thead>
-        <tr>
+        <tr align="left">
             <th>ID</th>
-            <th>Name</th>
-            <th>URL</th>
+            <th >Name</th>
+
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="project in projects">
             <td>{{project.id}}</td>
-            <td><a ng-href='project.html?projectId={{ project.id }}'>{{project.name}}</a></td>
-            <td>{{project.url}}</td>
+            <td><a ng-href='project.html?projectId={{ project.id }}'>{{project.name}}</a></td>   
         </tr>
     </tbody>
     </table>
+    </div>
 </div>
 </body>
 </html>

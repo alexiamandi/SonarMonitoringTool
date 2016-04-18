@@ -1,10 +1,13 @@
 package alex.iamandi.SonarMonitoringTool;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Metric {
@@ -13,9 +16,12 @@ public class Metric {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
 	String key;
+	@Column(length = 1000)
 	String val;
+	@Column(length = 1000)
 	String frmt_val;
 	@ManyToOne
+	@JsonBackReference
 	private Project project;
 	String date;
 

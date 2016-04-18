@@ -7,35 +7,53 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
 <script src="hello.js"></script>
+<script src="c3/assets/js/d3.min.js" charset="utf-8"></script>
+<script src="c3/assets/js/c3.min.js"></script>
+<script src="c3/assets/js/angular.min.js"></script>
+<script src="c3/assets/js/c3-angular.min.js"></script>
+
+<script src="c3/assets/js/app.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="myApp">
 	<div id="wrapper">
 		<header>
 			<div class="header-left">
-				<h1>Sonar Monitoring Tool</h1>
+				<h1>
+					<a href="/index.html">Sonar Monitoring Tool</a>
+				</h1>
 			</div>
 		</header>
-		<div id="middle">
+		<nav>
 
-			<br> <br>
+			<ul>
+				<li class="active"><a href="/">Add new URL</a></li>
+				<li style="float: right;"><a href="/sonar-projects.html">All
+						projects</a></li>
+			</ul>
+
+		</nav>
+
+		<div id="middle">
 			<div style="background-color: rgba(0, 0, 0, 0.5);">
 				<div id="middle-bottom" ng-controller="URLCtrl">
 					<div>
 						<form name="URLForm" ng-submit="saveURL(URLInfo)">
 							<label>URL:</label> <input type="text" name="fURL"
 								ng-model="URLInfo.fURL" ng-required="true" ng-minlength="2" />
-							<br> <input type="submit" ng-class="button1Class" value="Save"
-								ng-disabled="saveButtonSwitch" />
+							<br> <input type="submit" ng-class="button1Class"
+								value="Save" ng-disabled="saveButtonSwitch" />
 					</div>
-					<img ng-class="loadingClass" width="50" height="50"
-						src="http://www.mvgen.com/loader.gif" />
-
+					<img ng-class="loadingBox" src="http://www.mvgen.com/loader.gif" />
+					<div ng-class="notURLBox">The given link does not contain 'http://' or 'https://'.</div>
+					<div ng-class="notSonarBox">The given URL is not a SonarQube instance.</div>
+					
 				</div>
 			</div>
 		</div>
 		<br> <br> <br> <br> <br> <br> <br>
 		<br>
+		
 	</div>
 </body>
 </html>

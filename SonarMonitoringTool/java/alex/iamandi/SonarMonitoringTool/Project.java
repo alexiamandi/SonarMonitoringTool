@@ -13,6 +13,8 @@ import javax.persistence.IdClass;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity(name = "Project")
 @IdClass(ProjectPK.class)
 public class Project {
@@ -33,6 +35,7 @@ public class Project {
 	String date;
 	String creationDate;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
 	@OrderBy("date")
 	private Set<Metric> msr = new HashSet<>();
 
