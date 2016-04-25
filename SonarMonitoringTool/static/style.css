@@ -2,6 +2,11 @@ body {
 	font-family: Calibri;
 	background-color: #f2f2f2;
 }
+a:link{color:blue;
+text-decoration:none;}
+a:active{color:blue;
+text-decoration:none;}
+a:visited{color:blue;}
 
 #wrapper {
 	width: 1000px;
@@ -203,3 +208,25 @@ nav ul li a:visited {
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0
 		rgba(0, 0, 0, 0.19);
 }
+.moreInfoButton{
+	margin-top: 20px;
+	background-color: rgb(55, 140, 232);
+	color: white;
+	width: 120px;
+	height: 30px;
+	border: none;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	margin:15px;
+	display:block;
+	text-align:center;
+	text-decoration:none;
+}
+.moreInfoButton:hover{
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 30px 0
+		rgba(0, 0, 0, 0.19);
+}
+tr:nth-child(even) {
+    background-color: #e2e2e2;
+}
+

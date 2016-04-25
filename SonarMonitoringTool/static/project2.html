@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<title>Sonar Monitoring Tool</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.js"></script>
+
+<!-- Load c3.css -->
+<link href="c3/c3.css" rel="stylesheet" type="text/css">
+
+<!-- Load d3.js and c3.js -->
+<script src="c3/d3.min.js" charset="utf-8"></script>
+<script src="c3/c3.min.js"></script>
+<script src="hello.js"></script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+	<div id="wrapper">
+
+		<header>
+			<div class="header-left">
+				<h1>
+					<a href="/index.html" target="_self">Sonar Monitoring Tool</a>
+				</h1>
+			</div>
+		</header>
+
+		<nav>
+
+			<ul>
+				<li><a href="/" target="_self">Add new URL</a></li>
+				<li style="float: right;"><a href="/sonar-projects.html"
+					target="_self">All projects</a></li>
+			</ul>
+
+		</nav>
+		<div ng-controller="GetProjectCtrl2" style ="margin-left:10px;margin-right:10px;">
+					<img ng-class="loadingBox" width="50px" height="50px" style="display:block; margin:0 auto;" src="http://www.mvgen.com/loader.gif" />
+		
+	<h2>{{project.name}}</h2>
+	<p> {{project.description}}</p>
+			<table width="50%">
+			
+				<tbody>
+					<tr>
+						<td><b>ID</b>: {{project.id}}</td>
+					</tr>
+					<tr>
+						<td><b>Name</b>: {{project.name}}</td>
+					</tr>
+					<tr>
+						<td><b>URL</b>: <a
+							ng-href='{{project.url}}overview?id={{project.id}}'>{{project.url}}</a></td>
+					</tr>
+					<tr>
+						<td><b>Last update date</b>: {{ project.date | date:"dd/MM/yyyy @ h:mma" }}</td>
+					</tr>
+				</tbody>
+			</table>
+<a ng-href='/project.html?projectId={{project.id}}' target="_self" class="moreInfoButton" style="color:white; width:150px;">Issues & tests charts</a>
+			<div>
+		
+			</div>
+<h3>Issues:</h3>			
+<table width='100%' class="tableRepeat">
+	<tr ng-repeat="issue in issues">
+		<td width='70%'>
+	<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a> 
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>General:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in general">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>Documentation:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in documentation">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>Complexity:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in complexity">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>Size:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in sizes">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>Duplication:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in duplications">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+<h3>Tests:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in tests">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+
+<h3>Maintainability:</h3>			
+<table width='100%'>
+	<tr ng-repeat="issue in maintains">
+		<td width='70%'>
+		<a ng-href='GetCostumMetrics.html?projectId={{project.id}}&name={{issue.name}}&key={{issue.key}}' target="_self">{{issue.name}}</a>
+		</td>
+		<td>
+		{{issue.value}}
+		</td>
+	</tr>
+</table>
+	</div>
+	</div>
+
+</body>
+</html>

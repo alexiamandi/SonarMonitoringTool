@@ -13,6 +13,7 @@
 <script src="c3/d3.min.js" charset="utf-8"></script>
 <script src="c3/c3.min.js"></script>
 <script src="hello.js"></script>
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="myApp">
@@ -35,8 +36,8 @@
 			</ul>
 
 		</nav>
-		<div ng-controller="GetProjectCtrl">
-			<img ng-class="loadingBox" style="text-align: center;" src="http://www.mvgen.com/loader.gif" />
+		<div ng-controller="GetCustomMetrics">
+			<img ng-class="loadingBox" width="50px" height="50px" style="display:block; margin:0 auto;" src="http://www.mvgen.com/loader.gif" />
 	<h2>{{project.name}}</h2>
 	<p> {{project.description}}</p>
 			<table width="50%">
@@ -58,15 +59,14 @@
 				</tbody>
 			</table>
 <a ng-href='/project2.html?projectId={{project.id}}' target="_self" class="moreInfoButton" style="color:white;">More info</a>
+<a ng-href='/project.html?projectId={{project.id}}' target="_self" class="moreInfoButton" style="color:white; width:150px;">Issues & tests charts</a>
+
 			<div>
 		
 			</div>
-	<h2>Issues</h2>
+	<h2> {{metricName | myFormat}}</h2>
     <div id="chart"></div>
 
-	<h2>Tests</h2>
-    <div id="chart2"></div>
-		</div>
 
 	</div>
 	</div>
