@@ -211,7 +211,7 @@ nav ul li a:visited {
 .moreInfoButton{
 	margin-top: 20px;
 	background-color: rgb(55, 140, 232);
-	color: white;
+	color: rgb(55, 140, 232);
 	width: 120px;
 	height: 30px;
 	border: none;

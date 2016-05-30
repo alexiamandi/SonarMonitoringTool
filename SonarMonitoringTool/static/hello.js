@@ -201,11 +201,11 @@ myApp.controller('GetProjectCtrl', [
 		// FirstChart
 						$scope.chart = null;
 					    $scope.config={};
-					    $scope.config.Blocker=blockerValues;
-					    $scope.config.Critical = criticalValues;
-					    $scope.config.Major = majorValues;
-					    $scope.config.Minor = minorValues;
-					    $scope.config.Info = infoValues;
+					    if(blockerValues !=0) $scope.config.Blocker=blockerValues; else $scope.config.Blocker='0';
+					    if(criticalValues !=0) $scope.config.Critical = criticalValues; else $scope.config.Critical='0';
+					    if(blockerValues !=0) $scope.config.Major = majorValues; else $scope.config.Major='0';
+					    if(majorValues !=0)$scope.config.Minor = minorValues; else $scope.config.Minor='0';
+					    if(infoValues !=0)$scope.config.Info = infoValues; else $scope.config.Info='0';
 					    $scope.config.Date= Dates;
 					    $scope.typeOptions=["line","bar","spline","step","area","area-step","area-spline"];
 					    $scope.config.type1="line";
@@ -213,11 +213,11 @@ myApp.controller('GetProjectCtrl', [
 		// 2nd Chart
 					    $scope.chart2 = null;
 					    $scope.config2={};
-					    $scope.config2.ncloc=nclocValues;
-					    $scope.config2.sqaleIndex = sqaleIndexValues;
-					    $scope.config2.coverage = coverageValues;
-					    $scope.config2.duplicatedLines = duplicatedLinesValues;
-					    $scope.config2.complexity = complexityValues;
+					    if(nclocValues != null){   $scope.config2.ncloc=nclocValues;} else $scope.config2.ncloc='0';
+					    if(sqaleIndexValues != null){   $scope.config2.sqaleIndex = sqaleIndexValues; } else $scope.config2.sqaleIndex='0';
+					    if(coverageValues != null){     $scope.config2.coverage = coverageValues; } else $scope.config2.coverage='0';
+					    if(duplicatedLinesValues != null){     $scope.config2.duplicatedLines = duplicatedLinesValues; } else $scope.config2.duplicatedLines='0';
+					    if(complexityValues != null){     $scope.config2.complexity = complexityValues; } else $scope.config2.complexity='0';
 					    $scope.config.Date= Dates;
 					    $scope.typeOptions=["line","bar","spline","step","area","area-step","area-spline"];
 					    $scope.config.type1="line"; 
@@ -680,6 +680,8 @@ myApp.controller('GetCustomMetrics', [
                         								}
                             					}
                             					data.allMsr.forEach(setViolations);
+            									$scope.loadingBox = "loading-hidden";
+
                             					// FirstChart
                             									$scope.chart = null;
                             								    $scope.config={};
@@ -710,7 +712,7 @@ myApp.controller('GetCustomMetrics', [
 myApp.filter('myFormat', function() {
     return function(x) {
         var i, c, txt = "";
-        x = x.split("")
+        x = x.split("");
         for (i = 0; i < x.length; i++) {
             c = x[i];
             if (i == 0) {

@@ -213,7 +213,6 @@ public class GetInfo {
 					+ "new_uncovered_conditions," + "uncovered_lines," + "new_uncovered_lines," + "tests,"
 					+ "test_execution_time," + "test_errors," + "test_failures," + "test_success_density,"
 					+ "&format=json"), mapper.getTypeFactory().constructCollectionType(List.class, Project.class));
-			projectsToParse = projects;
 			for (Project project : projects) {
 
 				if (project.getAllMsr() != null) {
@@ -222,7 +221,7 @@ public class GetInfo {
 					}
 					project.setURL(instance.toString());
 				}
-
+				projectsToParse.add(project);
 			}
 			projectRepository.save(projects);
 		} catch (MalformedURLException e) {
